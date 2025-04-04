@@ -1,0 +1,32 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Migrador COBOL a PL/SQL con IA</title>
+</head>
+<body>
+  <h1>🧠 Migrador COBOL ➜ PL/SQL con IA</h1>
+
+  <form action="/" method="POST" enctype="multipart/form-data">
+    <label>Sube un archivo COBOL (.cob):</label>
+    <input type="file" name="files" required />
+    <button type="submit">Migrar</button>
+  </form>
+
+  {% if error %}
+    <p style="color: red;">⚠️ {{ error }}</p>
+  {% endif %}
+
+  {% if cobol_code %}
+    <h3>📄 Código COBOL:</h3>
+    <pre>{{ cobol_code }}</pre>
+  {% endif %}
+
+  {% if plsql_code %}
+    <h3>✅ Resultado PL/SQL:</h3>
+    <pre>{{ plsql_code }}</pre>
+    <a href="{{ download_link }}">⬇️ Descargar ZIP con resultados</a>
+  {% endif %}
+</body>
+</html>
